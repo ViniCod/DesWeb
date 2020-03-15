@@ -14,6 +14,6 @@ public class Geometria {
 			text += "Perimetro: " + figura.perimetro() + "\n";
 			text += "Diagonal: " + figura.diagonal();
 			System.out.println(text);
-		}
+        }
 	}
 }
