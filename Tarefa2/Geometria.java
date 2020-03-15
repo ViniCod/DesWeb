@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Geometria {
 	public static void main(String[] args) {
-		ArrayList<Quadrilateral> figuras = new ArrayList<>();
+		ArrayList<Quadrilatero> figuras = new ArrayList<>();
 		
 		figuras.add(new Retangulo(4.0, 6.0));
         figuras.add(new Quadrado(3.0));
