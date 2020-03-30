@@ -9,13 +9,13 @@ import model.Pais;
 
 public class PaisDAO {
 	public int criar(Pais Pais) {
-		String sqlInsert = "INSERT INTO Pais(nome, fone, email) VALUES (?, ?, ?)";
+		String sqlInsert = "INSERT INTO Pais(nome, populacao, area) VALUES (?, ?, ?)";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = ConnectionFactory.obtemConexao();
 				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
 			stm.setString(1, Pais.getNome());
-			stm.setString(2, Pais.getFone());
-			stm.setString(3, Pais.getEmail());
+			stm.setString(2, Pais.getPopulacao());
+			stm.setString(3, Pais.getArea());
 			stm.execute();
 			String sqlQuery = "SELECT LAST_INSERT_ID()";
 			try (PreparedStatement stm2 = conn.prepareStatement(sqlQuery);
@@ -33,13 +33,13 @@ public class PaisDAO {
 	}
 
 	public void atualizar(Pais Pais) {
-		String sqlUpdate = "UPDATE Pais SET nome=?, fone=?, email=? WHERE id=?";
+		String sqlUpdate = "UPDATE Pais SET nome=?, populacao=?, area=? WHERE id=?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = ConnectionFactory.obtemConexao();
 				PreparedStatement stm = conn.prepareStatement(sqlUpdate);) {
 			stm.setString(1, Pais.getNome());
-			stm.setString(2, Pais.getFone());
-			stm.setString(3, Pais.getEmail());
+			stm.setString(2, Pais.getPopulacao());
+			stm.setString(3, Pais.getArea());
 			stm.setInt(4, Pais.getId());
 			stm.execute();
 		} catch (Exception e) {
@@ -62,7 +62,7 @@ public class PaisDAO {
 	public Pais carregar(int id) {
 		Pais Pais = new Pais();
 		Pais.setId(id);
-		String sqlSelect = "SELECT nome, fone, email FROM Pais WHERE Cliente.id = ?";
+		String sqlSelect = "SELECT nome, populacao, area FROM Pais WHERE Pais.id = ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = ConnectionFactory.obtemConexao();
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -70,13 +70,13 @@ public class PaisDAO {
 			try (ResultSet rs = stm.executeQuery();) {
 				if (rs.next()) {
 					Pais.setNome(rs.getString("nome"));
-					Pais.setFone(rs.getString("fone"));
-					Pais.setEmail(rs.getString("email"));
+					Pais.setPopulacao(rs.getString("populacao"));
+					Pais.setArea(rs.getString("area"));
 				} else {
 					Pais.setId(-1);
 					Pais.setNome(null);
-					Pais.setFone(null);
-					Pais.setEmail(null);
+					Pais.setPopulacao(null);
+					Pais.setArea(null);
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();

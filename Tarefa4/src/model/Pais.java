@@ -6,8 +6,8 @@ public class Pais implements Serializable {
     private static final long serialVersionUID = 1L;
 	private int id;
 	private String nome;
-	private String fone;
-	private String email;
+	private String populacao;
+	private String area;
 
 	public Pais() {
 	}
@@ -28,26 +28,26 @@ public class Pais implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getFone() {
-		return fone;
+	public String getPopulacao() {
+		return populacao;
 	}
 
-	public void setFone(String fone) {
-		this.fone = fone;
+	public void setPopulacao(String populacao) {
+		this.populacao = populacao;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getArea() {
+		return area;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setArea(String area) {
+		this.area = area;
 	}
 
 	@Override
 	public String toString() {
-		return "Pais [id=" + id + ", nome=" + nome + ", fone=" + fone
-				+ ", email=" + email + "]";
+		return "Pais [id=" + id + ", nome=" + nome + ", populacao=" + populacao
+				+ ", area=" + area + "]";
 	}
 
 	@Override
@@ -59,15 +59,15 @@ public class Pais implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Pais other = (Pais) obj;
-		if (email == null) {
-			if (other.email != null)
+		if (area == null) {
+			if (other.area != null)
 				return false;
-		} else if (!email.equals(other.email))
+		} else if (!area.equals(other.area))
 			return false;
-		if (fone == null) {
-			if (other.fone != null)
+		if (populacao == null) {
+			if (other.populacao != null)
 				return false;
-		} else if (!fone.equals(other.fone))
+		} else if (!populacao.equals(other.populacao))
 			return false;
 		if (id != other.id)
 			return false;

@@ -14,7 +14,7 @@ body {
 }
 h3 {
     text-align: center;
-    margin-top: 32px;
+    padding-top: 15px;
 }
 p {
     margin-left: 25px;
@@ -25,11 +25,10 @@ input {
     cursor: pointer;
 }
 input:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 .container input[type="text"] {
     margin-right: 20px;
-
 }
 .container input[type="submit"] {
     border-radius: 5px;

@@ -31,14 +31,14 @@ public class ManterPaisController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String pNome = request.getParameter("nome");
-		String pFone = request.getParameter("fone");
-		String pEmail = request.getParameter("email");
+		String pPopulacao = request.getParameter("populacao");
+		String pArea = request.getParameter("area");
 		
 		//instanciar o javabean
 		Pais Pais = new Pais();
 		Pais.setNome(pNome);
-		Pais.setFone(pFone);
-		Pais.setEmail(pEmail);
+		Pais.setPopulacao(pPopulacao);
+		Pais.setArea(pArea);
 		
 		//instanciar o service
 		PaisService cs = new PaisService();
@@ -49,8 +49,8 @@ public class ManterPaisController extends HttpServlet {
 		out.println("<html><head><title>Cliente Cadastrado</title><link href=\"https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700,900&display=swap\" rel=\"stylesheet\"><link rel=\"stylesheet\" href=\"style.css\"></head><body>");
 		out.println(	"Id: "+Pais.getId()+"<br>");
 		out.println(	"Nome: "+Pais.getNome()+"<br>");
-		out.println(	"Telefone: "+Pais.getFone()+"<br>");
-		out.println(	"E-mail: "+Pais.getEmail()+"<br>");
+		out.println(	"População: "+Pais.getPopulacao()+"<br>");
+		out.println(	"Área: "+Pais.getArea()+"<br>");
 	    out.println("</body></html>");
 		
 	}
