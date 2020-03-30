@@ -6,8 +6,8 @@ public class Pais implements Serializable {
     private static final long serialVersionUID = 1L;
 	private int id;
 	private String nome;
-	private String populacao;
-	private String area;
+	private long populacao;
+	private double area;
 
 	public Pais() {
 	}
@@ -28,19 +28,19 @@ public class Pais implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getPopulacao() {
+	public long getPopulacao() {
 		return populacao;
 	}
 
-	public void setPopulacao(String populacao) {
+	public void setPopulacao(long populacao) {
 		this.populacao = populacao;
 	}
 
-	public String getArea() {
+	public double getArea() {
 		return area;
 	}
 
-	public void setArea(String area) {
+	public void setArea(double area) {
 		this.area = area;
 	}
 
@@ -59,16 +59,14 @@ public class Pais implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Pais other = (Pais) obj;
-		if (area == null) {
-			if (other.area != null)
+		if (area == 0) {
+			if (other.area != 0)
 				return false;
-		} else if (!area.equals(other.area))
-			return false;
-		if (populacao == null) {
-			if (other.populacao != null)
+		}
+		if (populacao == 0) {
+			if (other.populacao != 0)
 				return false;
-		} else if (!populacao.equals(other.populacao))
-			return false;
+		}
 		if (id != other.id)
 			return false;
 		if (nome == null) {

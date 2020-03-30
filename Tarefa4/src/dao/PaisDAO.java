@@ -14,8 +14,8 @@ public class PaisDAO {
 		try (Connection conn = ConnectionFactory.obtemConexao();
 				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
 			stm.setString(1, Pais.getNome());
-			stm.setString(2, Pais.getPopulacao());
-			stm.setString(3, Pais.getArea());
+			stm.setLong(2, Pais.getPopulacao());
+			stm.setDouble(3, Pais.getArea());
 			stm.execute();
 			String sqlQuery = "SELECT LAST_INSERT_ID()";
 			try (PreparedStatement stm2 = conn.prepareStatement(sqlQuery);
@@ -38,8 +38,8 @@ public class PaisDAO {
 		try (Connection conn = ConnectionFactory.obtemConexao();
 				PreparedStatement stm = conn.prepareStatement(sqlUpdate);) {
 			stm.setString(1, Pais.getNome());
-			stm.setString(2, Pais.getPopulacao());
-			stm.setString(3, Pais.getArea());
+			stm.setLong(2, Pais.getPopulacao());
+			stm.setDouble(3, Pais.getArea());
 			stm.setInt(4, Pais.getId());
 			stm.execute();
 		} catch (Exception e) {
@@ -70,13 +70,13 @@ public class PaisDAO {
 			try (ResultSet rs = stm.executeQuery();) {
 				if (rs.next()) {
 					Pais.setNome(rs.getString("nome"));
-					Pais.setPopulacao(rs.getString("populacao"));
-					Pais.setArea(rs.getString("area"));
+					Pais.setPopulacao(rs.getLong("populacao"));
+					Pais.setArea(rs.getDouble("area"));
 				} else {
 					Pais.setId(-1);
 					Pais.setNome(null);
-					Pais.setPopulacao(null);
-					Pais.setArea(null);
+					Pais.setPopulacao(0);
+					Pais.setArea(0);
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
