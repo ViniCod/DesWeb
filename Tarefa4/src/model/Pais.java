@@ -2,14 +2,14 @@ package model;
 
 import java.io.Serializable;
 
-public class Cliente implements Serializable {
+public class Pais implements Serializable {
     private static final long serialVersionUID = 1L;
 	private int id;
 	private String nome;
 	private String fone;
 	private String email;
 
-	public Cliente() {
+	public Pais() {
 	}
 
 	public int getId() {
@@ -46,7 +46,7 @@ public class Cliente implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Cliente [id=" + id + ", nome=" + nome + ", fone=" + fone
+		return "Pais [id=" + id + ", nome=" + nome + ", fone=" + fone
 				+ ", email=" + email + "]";
 	}
 
@@ -58,7 +58,7 @@ public class Cliente implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Cliente other = (Cliente) obj;
+		Pais other = (Pais) obj;
 		if (email == null) {
 			if (other.email != null)
 				return false;

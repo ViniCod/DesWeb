@@ -9,14 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Cliente;
-import service.ClienteService;
+import model.Pais;
+import service.PaisService;
 
 /**
  * Servlet implementation class ManterClienteController
  */
-@WebServlet("/ManterCliente.do")
-public class ManterClienteController extends HttpServlet {
+@WebServlet("/ManterPais.do")
+public class ManterPaisController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -35,22 +35,22 @@ public class ManterClienteController extends HttpServlet {
 		String pEmail = request.getParameter("email");
 		
 		//instanciar o javabean
-		Cliente Cliente = new Cliente();
-		Cliente.setNome(pNome);
-		Cliente.setFone(pFone);
-		Cliente.setEmail(pEmail);
+		Pais Pais = new Pais();
+		Pais.setNome(pNome);
+		Pais.setFone(pFone);
+		Pais.setEmail(pEmail);
 		
 		//instanciar o service
-		ClienteService cs = new ClienteService();
-		cs.criar(Cliente);
-		Cliente = cs.carregar(Cliente.getId());
+		PaisService cs = new PaisService();
+		cs.criar(Pais);
+		Pais = cs.carregar(Pais.getId());
 		
 		PrintWriter out = response.getWriter();
 		out.println("<html><head><title>Cliente Cadastrado</title><link href=\"https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700,900&display=swap\" rel=\"stylesheet\"><link rel=\"stylesheet\" href=\"style.css\"></head><body>");
-		out.println(	"Id: "+Cliente.getId()+"<br>");
-		out.println(	"Nome: "+Cliente.getNome()+"<br>");
-		out.println(	"Telefone: "+Cliente.getFone()+"<br>");
-		out.println(	"E-mail: "+Cliente.getEmail()+"<br>");
+		out.println(	"Id: "+Pais.getId()+"<br>");
+		out.println(	"Nome: "+Pais.getNome()+"<br>");
+		out.println(	"Telefone: "+Pais.getFone()+"<br>");
+		out.println(	"E-mail: "+Pais.getEmail()+"<br>");
 	    out.println("</body></html>");
 		
 	}
