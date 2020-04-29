@@ -12,17 +12,16 @@ public class DAOComentario {
 
 	public int criar(Comentario comentario) {
 		String sqlInsert = "INSERT INTO comentario(nome, texto, fk_noticia_id) VALUES (?, ?, ?)";
-		
+
 		try (Connection conn = ConnectionFactory.getConnection();
-				PreparedStatment stm = conn.prepareStatment(sqlInsert);) {
+				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
 			stm.setString(1, comentario.getNome());
 			stm.setString(2, comentario.getTexto());
-			stm.setString(3, comentario.getNoticia().getId());
+			stm.setInt(3, comentario.getNoticia().getId());
 			stm.execute();
 			String sqlQuery = "SELECT LAST_INSERT_ID()";
-			
-			try (PreparedStatement stm2 = conn.prepareStatement(sqlQuery);
-					ResultSet rs = stm2.executeQuery();) {
+
+			try (PreparedStatement stm2 = conn.prepareStatement(sqlQuery); ResultSet rs = stm2.executeQuery();) {
 				if (rs.next()) {
 					comentario.setId(rs.getInt(1));
 				}
@@ -47,7 +46,7 @@ public class DAOComentario {
 					Comentario comentario = new Comentario();
 					comentario.setNome(rs.getString("nome"));
 					comentario.setTexto(rs.getString("texto"));
-					comentario.add(comentario);
+					comentarios.add(comentario);
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -57,4 +56,5 @@ public class DAOComentario {
 		}
 		return comentarios;
 	}
+
 }
