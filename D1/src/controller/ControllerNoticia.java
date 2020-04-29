@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.Noticia;
 import model.Comentario;
-import service.NoticiaService;
+import service.ServiceNoticia;
 
 
 @WebServlet(name="Noticias", urlPatterns={"/Noticias.do/*"})
