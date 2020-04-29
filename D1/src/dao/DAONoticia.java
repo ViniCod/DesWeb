@@ -10,7 +10,7 @@ import model.Noticia;
 
 public class DAONoticia {
 	public boolean serializeFk = true;
-	
+
 	public int criar(Noticia noticia) {
 		String sqlInsert = "INSERT INTO noticia(descricao, titulo, texto) VALUES (?, ?, ?)";
 
@@ -21,9 +21,8 @@ public class DAONoticia {
 			stm.setString(3, noticia.getText());
 			stm.execute();
 			String sqlQuery = "SELECT LAST_INSERT_ID()";
-			
-			try (PreparedStatement stm2 = conn.prepareStatement(sqlQuery);
-					ResultSet rs = stm2.executeQuery();) {
+
+			try (PreparedStatement stm2 = conn.prepareStatement(sqlQuery); ResultSet rs = stm2.executeQuery();) {
 				if (rs.next()) {
 					noticia.setId(rs.getInt(1));
 				}
@@ -79,9 +78,7 @@ public class DAONoticia {
 					noticia.setText(rs.getString("texto"));
 					noticia.setTitulo(rs.getString("titulo"));
 					if (this.serializeFk) {
-						noticia.setComentarios(
-							daoComentario.list(noticia.getId())
-						);					
+						noticia.setComentarios(daoComentario.list(noticia.getId()));
 					}
 				} else {
 					noticia.setId(-1);
@@ -98,7 +95,7 @@ public class DAONoticia {
 	public ArrayList<Noticia> list() {
 		String sqlSelect = "SELECT * FROM noticia";
 		ArrayList<Noticia> noticias = new ArrayList<>();
-		
+
 		try (Connection conn = ConnectionFactory.getConnection();
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
 			try (ResultSet rs = stm.executeQuery();) {
@@ -109,9 +106,7 @@ public class DAONoticia {
 					noticia.setId(rs.getInt("id"));
 					noticia.setText(rs.getString("texto"));
 					noticia.setTitulo(rs.getString("titulo"));
-					noticia.setComentarios(
-						daoComentario.list(noticia.getId())
-					);
+					noticia.setComentarios(daoComentario.list(noticia.getId()));
 					noticias.add(noticia);
 				}
 			} catch (SQLException e) {
