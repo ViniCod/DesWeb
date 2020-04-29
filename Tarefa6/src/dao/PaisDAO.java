@@ -10,7 +10,6 @@ import model.Pais;
 public class PaisDAO {
 	public int criar(Pais Pais) {
 		String sqlInsert = "INSERT INTO Pais(nome, populacao, area) VALUES (?, ?, ?)";
-		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = ConnectionFactory.obtemConexao();
 				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
 			stm.setString(1, Pais.getNome());
@@ -33,8 +32,7 @@ public class PaisDAO {
 	}
 
 	public void atualizar(Pais Pais) {
-		String sqlUpdate = "UPDATE Pais SET nome=?, fone=?, email=? WHERE id=?";
-		// usando o try with resources do Java 7, que fecha o que abriu
+		String sqlUpdate = "UPDATE Pais SET nome=?, populacao=?, area=? WHERE id=?";
 		try (Connection conn = ConnectionFactory.obtemConexao();
 				PreparedStatement stm = conn.prepareStatement(sqlUpdate);) {
 			stm.setString(1, Pais.getNome());
@@ -49,7 +47,6 @@ public class PaisDAO {
 
 	public void excluir(int id) {
 		String sqlDelete = "DELETE FROM Pais WHERE id = ?";
-		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = ConnectionFactory.obtemConexao();
 				PreparedStatement stm = conn.prepareStatement(sqlDelete);) {
 			stm.setInt(1, id);
@@ -62,8 +59,7 @@ public class PaisDAO {
 	public Pais carregar(int id) {
 		Pais Pais = new Pais();
 		Pais.setId(id);
-		String sqlSelect = "SELECT nome, fone, email FROM Pais WHERE Pais.id = ?";
-		// usando o try with resources do Java 7, que fecha o que abriu
+		String sqlSelect = "SELECT nome, populacao, area FROM Pais WHERE id = ?";
 		try (Connection conn = ConnectionFactory.obtemConexao();
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
 			stm.setInt(1, Pais.getId());

@@ -10,3 +10,5 @@ INSERT INTO `Pais` (`id`,`nome`,`populacao`,`area`) VALUES (8,'França','6734800
 INSERT INTO `Pais` (`id`,`nome`,`populacao`,`area`) VALUES (9,'Alemanha','82800000','357051');
 INSERT INTO `Pais` (`id`,`nome`,`populacao`,`area`) VALUES (10,'Itália','60665551','301338');
 INSERT INTO `Pais` (`id`,`nome`,`populacao`,`area`) VALUES (11,'Rússia','144526636','17124442');
+
+SELECT * from Pais;

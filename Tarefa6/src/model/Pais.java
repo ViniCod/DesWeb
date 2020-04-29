@@ -32,7 +32,7 @@ public class Pais implements Serializable {
 		return populacao;
 	}
 
-	public void setPopulacao(long fone) {
+	public void setPopulacao(long populacao) {
 		this.populacao = populacao;
 	}
 
@@ -40,7 +40,7 @@ public class Pais implements Serializable {
 		return area;
 	}
 
-	public void setArea(double email) {
+	public void setArea(double area) {
 		this.area = area;
 	}
 
