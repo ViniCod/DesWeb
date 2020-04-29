@@ -15,7 +15,7 @@ nome VARCHAR(126),
 texto VARCHAR(512),
 fk_noticia_id INT NOT NULL,
 FOREIGN KEY (fk_noticia_id)
-REFERENCES noticia(id)
+REFERENCES noticia(id) ON DELETE ON UPDATE CASCADE
 );
 
 SELECT * FROM noticia;
