@@ -14,7 +14,7 @@ public class DAOComentario {
 		String sqlInsert = "INSERT INTO comentario(nome, texto, fk_noticia_id) VALUES (?, ?, ?)";
 		
 		try (Connection conn = ConnectionFactory.getConnection();
-				PreparedStatment stm = conn.preparedStatment(sqlInsert):) {
+				PreparedStatment stm = conn.prepareStatment(sqlInsert);) {
 			stm.setString(1, comentario.getNome());
 			stm.setString(2, comentario.getTexto());
 			stm.setString(3, comentario.getNoticia().getId());
@@ -40,7 +40,7 @@ public class DAOComentario {
 		ArrayList<Comentario> comentarios = new ArrayList<>();
 
 		try (Connection conn = ConnectionFactory.getConnection();
-				PreparedStatement stm = conn.preparedStatement(sqlSelect);) {
+				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
 			stm.setInt(1, noticiaId);
 			try (ResultSet rs = stm.executeQuery();) {
 				while (rs.next()) {
