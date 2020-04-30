@@ -17,13 +17,13 @@ public class ServiceNoticia {
 		this.daoNoticia.atualizar(noticia);
 	}
 	
-	public void delete(int id) {
+	public void excluir(int id) {
 		this.daoNoticia.excluir(id);
 	}
 
-	public Noticia read(int id) {
+	public Noticia ler(int id) {
 		this.daoNoticia.serializeFk = this.serializeFk;
-		Noticia n = this.daoNoticia.read(id);
+		Noticia n = this.daoNoticia.ler(id);
 		this.daoNoticia.serializeFk = true;
 		return n;
 	}

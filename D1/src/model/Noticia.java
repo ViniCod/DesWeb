@@ -6,7 +6,7 @@ public class Noticia {
 	private Integer id;
 	private String descricao;
 	private String titulo;
-	private String text;
+	private String texto;
 	private ArrayList<Comentario> comentarios;
 	
 	public Integer getId() {
@@ -33,12 +33,12 @@ public class Noticia {
 		this.titulo = titulo;
 	}
 	
-	public String getText() {
-		return text;
+	public String getTexto() {
+		return texto;
 	}
 	
-	public void setText(String text) {
-		this.text = text;
+	public void setTexto(String texto) {
+		this.texto = texto;
 	}
 
 	public ArrayList<Comentario> getComentarios() {

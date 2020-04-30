@@ -18,7 +18,7 @@ public class DAONoticia {
 				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
 			stm.setString(1, noticia.getDescricao());
 			stm.setString(2, noticia.getTitulo());
-			stm.setString(3, noticia.getText());
+			stm.setString(3, noticia.getTexto());
 			stm.execute();
 			String sqlQuery = "SELECT LAST_INSERT_ID()";
 
@@ -42,7 +42,7 @@ public class DAONoticia {
 				PreparedStatement stm = conn.prepareStatement(sqlUpdate);) {
 			stm.setString(1, noticia.getDescricao());
 			stm.setString(2, noticia.getTitulo());
-			stm.setString(3, noticia.getText());
+			stm.setString(3, noticia.getTexto());
 			stm.setInt(4, noticia.getId());
 			stm.execute();
 		} catch (Exception e) {
@@ -62,7 +62,7 @@ public class DAONoticia {
 		}
 	}
 
-	public Noticia read(int id) {
+	public Noticia ler(int id) {
 		Noticia noticia = new Noticia();
 		noticia.setId(id);
 		String sqlSelect = "SELECT * FROM noticia WHERE id = ?";
@@ -75,7 +75,7 @@ public class DAONoticia {
 					DAOComentario daoComentario = new DAOComentario();
 					noticia.setDescricao(rs.getString("descricao"));
 					noticia.setId(rs.getInt("id"));
-					noticia.setText(rs.getString("texto"));
+					noticia.setTexto(rs.getString("texto"));
 					noticia.setTitulo(rs.getString("titulo"));
 					if (this.serializeFk) {
 						noticia.setComentarios(daoComentario.list(noticia.getId()));
@@ -104,7 +104,7 @@ public class DAONoticia {
 					Noticia noticia = new Noticia();
 					noticia.setDescricao(rs.getString("descricao"));
 					noticia.setId(rs.getInt("id"));
-					noticia.setText(rs.getString("texto"));
+					noticia.setTexto(rs.getString("texto"));
 					noticia.setTitulo(rs.getString("titulo"));
 					noticia.setComentarios(daoComentario.list(noticia.getId()));
 					noticias.add(noticia);
