@@ -6,7 +6,7 @@ import dao.DAONoticia;
 import model.Noticia;
 
 public class ServiceNoticia {
-	private DAONoticia daoNoticia = new DAONoticia();
+	DAONoticia daoNoticia = new DAONoticia();
 	public boolean serializeFk = true;
 	
 	public int criar(Noticia noticia) {

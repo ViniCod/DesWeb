@@ -50,7 +50,7 @@ public class DAONoticia {
 		}
 	}
 
-	public void excluir(int id) {
+	public void excluir(Integer id) {
 		String sqlDelete = "DELETE FROM noticia WHERE id = ?";
 
 		try (Connection conn = ConnectionFactory.getConnection();

@@ -3,7 +3,6 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.ServletException;
@@ -39,7 +38,7 @@ public class ControllerNoticia extends HttpServlet {
 		form += "<input class=\"input\" type=\"hidden\" name=\"id\" value=\"" + noticia.getId() + "\"><br>";
 		form += "<input class=\"input\" type=\"text\" name=\"titulo\" value=\"" + noticia.getTitulo() + "\"><br>";
 		form += "<input class=\"input\" type=\"text\" name=\"descricao\" value=\"" + noticia.getDescricao() + "\"><br>";
-		form += "<textarea class=\"input\" name=\"texto\">" + noticia.getText() + "</textarea><br>";			
+		form += "<textarea class=\"input\" name=\"texto\">" + noticia.getTexto() + "</textarea><br>";			
 		form += "<input class=\"input\" type=\"submit\" value=\"Atualizar noticia\">";
 		form += "</form>";
 		return form;
@@ -49,7 +48,7 @@ public class ControllerNoticia extends HttpServlet {
 		String resposta = "";
 		resposta += "<h1>" + noticia.getTitulo() + "</h1>";
 		resposta += "<h2>" + noticia.getDescricao() + "</h2>";
-		resposta += "<h3>" + noticia.getText() + "</h3>";
+		resposta += "<h3>" + noticia.getTexto() + "</h3>";
 		
 		resposta += "<br><hr><br>";
 		
@@ -113,7 +112,7 @@ public class ControllerNoticia extends HttpServlet {
 			resposta += "</form>";
 		}
 		else {
-			Noticia noticia = serviceNoticia.read(Integer.parseInt(id));
+			Noticia noticia = serviceNoticia.ler(Integer.parseInt(id));
 			if (endpoint.contains("editar")) resposta += this.editForm(noticia);
 			else if (endpoint.contains("deletar")) resposta += this.deleteForm(noticia);
 			else resposta += this.detailForm(noticia);
@@ -128,7 +127,7 @@ public class ControllerNoticia extends HttpServlet {
 		String id = request.getParameter("id");
 		String deletar = request.getParameter("deletar");
 		if (deletar != null) {
-			serviceNoticia.delete(Integer.parseInt(id));
+			serviceNoticia.excluir(Integer.parseInt(id));
 			response.sendRedirect(this.url);
 			return;
 		}
@@ -139,15 +138,15 @@ public class ControllerNoticia extends HttpServlet {
 		
 		Noticia noticia = new Noticia();
 		noticia.setDescricao(descricao);
-		noticia.setText(texto);
+		noticia.setTexto(texto);
 		noticia.setTitulo(titulo);
 		noticia.setId(id == null ? null : Integer.parseInt(id));
 		
 		if (noticia.getId() != null) {
-			serviceNoticia.update(noticia);
+			serviceNoticia.atualizar(noticia);
 		}
 		else {
-			noticia.setId(serviceNoticia.create(noticia));			
+			noticia.setId(serviceNoticia.criar(noticia));			
 		}
 		
 		response.sendRedirect(this.url + "/" + noticia.getId());

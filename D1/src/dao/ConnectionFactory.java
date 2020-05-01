@@ -12,11 +12,10 @@ public class ConnectionFactory {
 			throw new RuntimeException(e);
 		}
 	}
-	
-	// Obtém conexão com o banco de dados
+
 	public static Connection getConnection() throws SQLException {
-		return DriverManager
-				.getConnection("jdbc:mysql://localhost:3306/realnews?useTimezone=true&serverTimezone=America/Sao_Paulo&user=root&password=");
+		return DriverManager.getConnection(
+				"jdbc:mysql://localhost:3306/realnews?useTimezone=true&serverTimezone=America/Sao_Paulo&user=root&password=");
 	}
 
 }
