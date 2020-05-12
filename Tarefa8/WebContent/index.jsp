@@ -24,12 +24,12 @@
             <div class="row">
                 <div class="form-group col-md-6">
                     <label for="populacao">População</label>
-                    <input type="text" class="form-control" name="populacao" id="populacao" maxlength="20" placeholder="PopulaÃ§Ã£o obrigatÃ³ria">
+                    <input type="text" class="form-control" name="populacao" id="populacao" maxlength="20" placeholder="População obrigatória">
                 </div>
 
                 <div class="form-group col-md-6">
                     <label for="area">Area</label>
-                    <input type="text" class="form-control" name="area" id="area" required maxlength="60" placeholder="Area obrigatÃ³ria">
+                    <input type="text" class="form-control" name="area" id="area" required maxlength="60" placeholder="Area obrigatória">
                 </div>
             </div>
             <hr />
