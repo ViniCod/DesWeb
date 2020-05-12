@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@page import="model.Pais" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -14,16 +14,15 @@
 </head>
 
 <body>
-    <%Pais pais=( Pais)request.getAttribute( "pais"); %>
-
+	<c:import url="Menu.jsp"/>
         <div id="main" class="container">
-            <h3 class="page-header">Visualizar Pais #<%=pais.getId() %></h3>
+            <h3 class="page-header">Visualizar Pais #${pais.id}</h3>
             <div class="row">
                 <div class="col-md-12">
                     <p><strong>Nome</strong>
                     </p>
                     <p>
-                        <%=pais.getNome() %>
+                        ${pais.nome}
                     </p>
                 </div>
             </div>
@@ -32,21 +31,21 @@
                     <p><strong>População</strong>
                     </p>
                     <p>
-                        <%=pais.getPopulacao() %>
+                        ${pais.populacao}
                     </p>
                 </div>
                 <div class="col-md-6">
                     <p><strong>Area</strong>
                     </p>
                     <p>
-                        <%=pais.getArea() %>
+                        ${pais.area}
                     </p>
                 </div>
             </div>
             <hr />
             <div id="actions" class="row">
                 <div class="col-md-12">
-                    <a href="index.html" class="btn btn-default">Voltar</a>
+                    <a href="index.jsp" class="btn btn-default">Voltar</a>
                 </div>
             </div>
         </div>
