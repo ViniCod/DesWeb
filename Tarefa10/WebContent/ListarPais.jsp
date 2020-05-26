@@ -31,10 +31,10 @@
 				<div class="modal-body">Deseja realmente excluir este pais?
 				</div>
 				<div class="modal-footer">
-					<form action="ManterPais.do" method="post">
+					<form action="controller.do" method="post">
 						<input type="hidden" name="id" id="id_excluir" />
-						<button type="submit" class="btn btn-primary" name="acao"
-							value="Excluir">Sim</button>
+						<button type="submit" class="btn btn-primary" name="command"
+							value="ExcluirPais">Sim</button>
 						<button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
 					</form>
 				</div>

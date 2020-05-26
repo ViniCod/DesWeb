@@ -22,37 +22,35 @@
 	<div id="main" class="container">
 		<h3 class="page-header">Alterar Pais #${pais.id }</h3>
 		<!-- Formulario para alteração de clientes -->
-		<form action="ManterCliente.do" method="post">
+		<form action="controller.do" method="post">
 			<!-- area de campos do form -->
 			<input type="hidden" name="id" value="${pais.id }" />
 			<div class="row">
 				<div class="form-group col-md-12">
 					<label for="nome">Nome</label> <input type="text"
 						class="form-control" name="nome" id="nome" required
-						maxlength="100" placeholder="nome completo"
-						value="${pais.nome }">
+						maxlength="100" placeholder="nome completo" value="${pais.nome }">
 				</div>
 			</div>
 			<div class="row">
 				<div class="form-group col-md-6">
 					<label for="populacao">População</label> <input type="populacao"
-						class="form-control" name="populacao" id="populacao" maxlength="20"
-						placeholder="População obrigatória"
+						class="form-control" name="populacao" id="populacao"
+						maxlength="20" placeholder="População obrigatória"
 						value="${pais.populacao }">
 				</div>
 
 				<div class="form-group col-md-6">
 					<label for="email">Area</label> <input type="area"
-						class="form-control" name="area" id="area" required
-						maxlength="60" placeholder="Area obrigatória"
-						value="${pais.area }">
+						class="form-control" name="area" id="area" required maxlength="60"
+						placeholder="Area obrigatória" value="${pais.area }">
 				</div>
 			</div>
 			<hr />
 			<div id="actions" class="row">
 				<div class="col-md-12">
-					<button type="submit" class="btn btn-primary" name="acao"
-						value="Alterar">Salvar</button>
+					<button type="submit" class="btn btn-primary" name="command"
+						value="AlterarPais">Salvar</button>
 					<a href="ListarPais.jsp" class="btn btn-default">Cancelar</a>
 				</div>
 			</div>
