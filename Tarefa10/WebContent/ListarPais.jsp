@@ -46,7 +46,7 @@
 	<c:import url="Menu.jsp" />
 	<!-- Container Principal -->
 	<div id="main" class="container">
-		<form action="listar_pais.do" method="post">
+		<form action="controller.do" method="post">
 			<div id="top" class="row">
 				<div class="col-md-3">
 					<h2>Países</h2>
@@ -58,8 +58,8 @@
 							type="text"
 							placeholder="Pesquisar Paises (deixe vazio para trazer todos)">
 						<span class="input-group-btn">
-							<button class="btn btn-primary" type="submit" name="acao"
-								value="buscar">
+							<button class="btn btn-primary" type="submit" name="command"
+								value="listarPaisBuscar">
 								<span class="glyphicon glyphicon-search"></span>
 							</button>
 						</span>
@@ -95,13 +95,10 @@
 									<td>${pais.nome }</td>
 									<td>${pais.populacao }</td>
 									<td>${pais.area }</td>
-									<td class="actions"><a class="btn btn-success btn-xs"
-										href="ManterPais.do?acao=Visualizar&id=${pais.id }">Visualizar</a>
-										<a class="btn btn-warning btn-xs"
-										href="ManterPais.do?acao=Editar&id=${pais.id }">Editar</a>
-										<button id="btn${pais.id }%>" type="button"
-											class="btn btn-danger btn-xs" data-toggle="modal"
-											data-target="#delete-modal" data-pais="${pais.id }">Excluir</button>
+									<td class="actions">
+										<a class="btn btn-success btn-xs" href="controller.do?command=VisualizarPais&id=${pais.id }">Visualizar</a>
+										<a class="btn btn-warning btn-xs" href="controller.do?command=EditarPais&id=${pais.id }">Editar</a>
+										<button id="btn${pais.id }%>" type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-modal" data-pais="${pais.id }">Excluir</button>
 									</td>
 								</tr>
 							</c:forEach>
